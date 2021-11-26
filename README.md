@@ -4,7 +4,6 @@ Projek UAS basdat
 ------[ List Pekerjaan ]------ 
 
 Bikin db
-Bikin repo github
 
 Front :
 > Login page,
