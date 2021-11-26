@@ -12,7 +12,6 @@ Front :
 > Detail game page,
 >Page keranjang,
 > Page Pembayaran,
-> Page Koleksi,
 > Page Friend,
 > Profil page,
 > Create_game page,
