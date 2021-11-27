@@ -1,0 +1,21 @@
+@import 'navbar.css';
+@import 'card.css';
+@import 'games.css';
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+ 
+body {
+	 margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-size: 62.5%; /*10px -> 1rem*/
+	 color: white;
+	 background: var(--color-dark-1);
+	 font-family: 'Roboto', sans-serif;
+}
+
+:root{
+    --color-dark-1: #082032;
+    --color-dark-2: #2C394B;
+    --color-dark-3: #334756;
+    --color-primary: #FF4C29;
+}
