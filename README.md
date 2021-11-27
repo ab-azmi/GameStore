@@ -10,7 +10,7 @@ Front :
 > Sign up page,
 > Home page,
 > Detail game page,
->Page keranjang,
+> Page keranjang,
 > Page Pembayaran,
 > Page Friend,
 > Profil page,
