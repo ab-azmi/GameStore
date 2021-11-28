@@ -28,7 +28,7 @@
                                                         INNER JOIN kategori ON kategori_games.id_kategori = kategori.id_kategori) WHERE games.id_game = $id");
                                     
                                     foreach($kategori as $baris): ?>
-                                        <a href="#" style="word-spacing: 5px; text-decoration: none;"> <?php echo $baris["kategori"]; ?> </a>
+                                        <a href="#" style="word-spacing: 5px; text-decoration: none; color:white;"> <?php echo $baris["kategori"]; ?> </a>
                                     <?php endforeach;
                                 ?>
                             </span>
