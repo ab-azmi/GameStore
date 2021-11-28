@@ -1,4 +1,5 @@
-  <div class="kategori-title">
+<?php require "functions.php" ?>  
+<div class="kategori-title">
       <h1>Kategori</h1>
       <a href="#" class="kategori-link">
           Lainnya
