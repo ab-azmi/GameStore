@@ -21,7 +21,7 @@
                             <span>Adventure,RPG</span>
                         </div>
                         <div class="title-product">
-                            <h3><?php echo $row["gambar"]; ?></h3>
+                            <h3><?php echo $row["name"]; ?></h3>
                         </div>
                         <div class="description-prod">
                             <p><?php echo $row["deskripsi"]; ?></p>
