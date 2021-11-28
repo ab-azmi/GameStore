@@ -26,7 +26,7 @@
           <div class="card_image">
               <img src="https://c.tenor.com/ftDAZSm3nqQAAAAC/lewd-anime.gif" />
           </div>
-          <div class="card_title">
+          <div class="card_title title-white">
               <p>Adult</p>
           </div>
       </div>
@@ -35,7 +35,7 @@
           <div class="card_image">
               <img src="https://64.media.tumblr.com/93d054deabe68bdb3017cb7e140133e0/b9427c9bde177883-75/s400x600/a3b9e3cb030d82a211e6c80fbe3641a5a926823c.gifv" />
           </div>
-          <div class="card_title">
+          <div class="card_title title-white">
               <p>War</p>
           </div>
       </div>
