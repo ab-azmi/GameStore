@@ -1,6 +1,7 @@
 <?php
     require "assets/php/functions.php";
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
