@@ -1,16 +1,16 @@
 .kategori-title{
-    margin: 5rem 5% 2rem 5%;
+    margin: 5rem 3% 2rem 3%;
     display: flex;
     justify-content: space-between;
     align-items:flex-end;
 }
 .kategori-title h1{
-    font-size: 2.2rem;
+    font-size: 3rem;
     color: var(--color-primary);
 }
 .kategori-link{
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: white;
 }
 .cards-list {
@@ -20,7 +20,7 @@
   align-items: center;
   flex-wrap: wrap;
   padding: 0 3rem 0 3rem;
-  gap: 2rem
+  gap: 5rem;
 }
 .card-title{
     color: white;
@@ -28,7 +28,7 @@
 .card-custom {
   width: clamp(100px, 280px, 280px);
   height: clamp(100px, 280px, 280px);
-  border-radius: 40px;
+  border-radius: 1rem;
 box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
   cursor: pointer;
   transition: 0.4s;
@@ -38,12 +38,13 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
   width: inherit;
   height: inherit;
   border-radius: 40px;
+  filter: brightness(60%);
 }
 
 .card-custom .card_image img {
   width: inherit;
   height: inherit;
-  border-radius: 40px;
+  border-radius: 1rem;
   object-fit: cover;
 }
 
@@ -55,6 +56,7 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
   font-size: 30px;
   margin-top: -80px;
   height: 40px;
+  filter: brightness(1);
 }
 
 .card-custom:hover {

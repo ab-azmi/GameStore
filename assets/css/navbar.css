@@ -44,7 +44,7 @@
 .navbar ul {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(6,1fr);
+  grid-template-columns: repeat(7,1fr);
   justify-self: end;
   place-items: center;
   gap: 1rem;
@@ -53,7 +53,7 @@
 .nav-item a {
   color: var(--color-primary);
   letter-spacing: .1rem;
-  font-size: 0.9rem;
+  font-size: 1.4rem;
   font-weight: 400;
   text-decoration: none;
   transition: color 0.3s ease-out;
@@ -70,7 +70,7 @@
 /* SEARCH FUNCTION */
 
 #search-icon {
-  font-size: 0.9rem;
+  font-size: 1.4rem;
   margin-top: 3px;
   margin-left: 20px;
   transition: color 0.3s ease-out;
@@ -104,6 +104,7 @@
   border-radius: 10rem;
   transition: opacity 0.6s ease;
   padding-left: 1rem;
+  background: #fff;
 }
 .search-input:focus{
     outline: none;
