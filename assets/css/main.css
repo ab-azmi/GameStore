@@ -1,13 +1,21 @@
 @import 'navbar.css';
 @import 'card.css';
 @import 'games.css';
+@import 'form.css';
 @import url('https://fonts.googleapis.com/css?family=Roboto');
  
+html{
+    box-sizing: border-box;
+    font-size: 62.5%; /*10px -> 1rem*/
+}
+
+*, *::after, *::before{
+    box-sizing: inherit;
+}
+
 body {
 	 margin: 0;
      padding: 0;
-     box-sizing: border-box;
-     font-size: 62.5%; /*10px -> 1rem*/
 	 color: white;
 	 background: var(--color-dark-1);
 	 font-family: 'Roboto', sans-serif;

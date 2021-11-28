@@ -25,7 +25,7 @@
           <div class="card_image">
               <img src="https://c.tenor.com/ftDAZSm3nqQAAAAC/lewd-anime.gif" />
           </div>
-          <div class="card_title title-black">
+          <div class="card_title">
               <p>Adult</p>
           </div>
       </div>
