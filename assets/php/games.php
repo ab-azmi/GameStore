@@ -18,7 +18,20 @@
                     </div>
                     <div class="wsk-cp-text">
                         <div class="category">
-                            <span>Adventure,RPG</span>
+                            <span>
+                                <?php
+                                    $id = $row["id_game"];
+                                    $kategori = query("SELECT
+                                                        games.id_game,
+                                                        kategori.kategori
+                                                        FROM((kategori_games INNER JOIN games ON kategori_games.id_game = games.id_game) 
+                                                        INNER JOIN kategori ON kategori_games.id_kategori = kategori.id_kategori) WHERE games.id_game = $id");
+                                    
+                                    foreach($kategori as $baris): ?>
+                                        <a href="#" style="word-spacing: 5px; text-decoration: none;"> <?php echo $baris["kategori"]; ?> </a>
+                                    <?php endforeach;
+                                ?>
+                            </span>
                         </div>
                         <div class="title-product">
                             <h3><?php echo $row["name"]; ?></h3>
