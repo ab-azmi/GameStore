@@ -9,8 +9,8 @@
                 <span class="bar"></span>
             </div>
             <ul class="nav no-search">
-                <li class="nav-item"><a href="/gamestore/index.php">Home</a></li>
-                <li class="nav-item"><a href="/gamestore/views/insert.php">Insert</a></li>
+                <li class="nav-item"><a href="/GameStore/index.php">Home</a></li>
+                <li class="nav-item"><a href="/GameStore/views/insert.php">Insert</a></li>
                 <li class="nav-item"><a href="#">Login</a></li>
                 <li class="nav-item"><a href="#">Profil</a></li>
                 <li class="nav-item"><a href="#">Friends</a></li>
