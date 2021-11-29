@@ -71,6 +71,9 @@
     text-decoration: none;
     color: white;
 }
+.cell a:hover, .striped .tr:nth-child(2n) a:hover{
+    color: blue;
+}
  .cell:first-child {
 	 padding-left: none;
 }
