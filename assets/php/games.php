@@ -6,7 +6,7 @@
         </a>
     </div>
     <div class="container2">
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-3">
                 <div class="wsk-cp-product">
                     <div class="wsk-cp-img">
@@ -89,8 +89,56 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="row">
+            <?php
+            require_once 'assets/php/connection.php';
+
+            $sql = "SELECT * FROM games";
+            if ($result = $mysqli->query($sql)) {
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_array()) {
+            ?>
+                        <div class="col-md-3">
+                            <div class="wsk-cp-product">
+                                <div class="wsk-cp-img">
+                                    <img src="<?php echo $row['gambar']; ?>" alt="Product" class="img-responsive" />
+                                </div>
+                                <div class="wsk-cp-text">
+                                    <div class="category">
+                                        <span><?php echo $row['kategori']; ?></span>
+                                    </div>
+                                    <div class="title-product">
+                                        <h3><?php echo $row['nama']; ?></h3>
+                                    </div>
+                                    <div class="description-prod">
+                                        <p><?php echo $row['deskripsi']; ?></p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="wcf-left">
+                                            <span class="price">
+                                                <?php echo 'Rp '.$row['harga'] ?>
+                                            </span>
+                                        </div>
+                                        <div class="wcf-right"><a href="#" class="buy-btn"><i class="fas fa-shopping-cart"></i></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            <?php
+                    }
+                    $result->free();
+                } else {
+                    echo "Table Kosong gan";
+                }
+            } else {
+                echo "Oops! Kayaknya ada yang salah. Coba lagi besok";
+            }
+            $mysqli->close();
+            ?>
+
+        </div>
+        <!-- <div class="row">
             <div class="col-md-6">
                 <div class="wsk-cp-product">
                     <div class="wsk-cp-img">
@@ -153,6 +201,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
