@@ -22,7 +22,6 @@
                                 <?php
                                     $id = $row["id_game"];
                                     $kategori = query("SELECT
-                                                        games.id_game,
                                                         kategori.kategori
                                                         FROM((kategori_games INNER JOIN games ON kategori_games.id_game = games.id_game) 
                                                         INNER JOIN kategori ON kategori_games.id_kategori = kategori.id_kategori) WHERE games.id_game = $id");
