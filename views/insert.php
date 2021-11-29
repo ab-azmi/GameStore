@@ -27,6 +27,7 @@
 
 <body>
     <?php include '../assets/php/navbar.php'; ?>
+
     <section class="form-section">
         <div class="container">
             <h1 class="text-center">INSERT GAME</h1>
@@ -72,14 +73,16 @@
                         <?php $i++; endforeach; ?>
                     </div>
                 </div>
-                <button class="gradient-border mt-5" id="box">
-                    Submit
-                </button>
-
+                <div class="col-3">
+                    <button class="gradient-border mt-5" id="box">
+                        Submit
+                    </button>
+                </div>
             </form>
 
         </div>
     </section>
+    
 </body>
 
 <?php include '../assets/php/footer.php'; ?>

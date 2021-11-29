@@ -1,0 +1,80 @@
+.manage_games{
+    padding: 5rem;
+}
+
+ .table {
+	 background: var(--color-dark-1);
+	 position: relative;
+     margin-top: 5rem;
+	 overflow: scroll;
+	 width: 100%;
+	 border-radius: 0.25em;
+}
+ .tr {
+	 display: flex;
+	 min-width: 60em;
+	 background: linear-gradient(-45deg, var(--color-primary), #EE7752, #E73C7E, #23A6D5);
+	 background-size: 100% 1000%;
+	 border-radius: 0.25em;
+     align-items: center;
+	 margin: 0.5em 0;
+     color: white;
+}
+ .tr:nth-child(n) {
+	 background-position: 0 0;
+}
+ .striped .tr:nth-child(2n), .tr.title, .striped .tr:nth-child(2n) a {
+	 background: #fff;
+     color: black;
+}
+ .title {
+	 margin-top: 0;
+	 padding: 2vw 0;
+	 font-weight: bold;
+	 position: sticky;
+     font-size: 1.5rem;
+	 border-radius: 0;
+	 top: 0;
+	 z-index: 10;
+	 box-shadow: 0 3px 7px -1px rgba(0,0,0,0.25);
+}
+ .tr:last-child {
+	 border-bottom: none;
+	 width: 100%;
+}
+ .td {
+	 width: calc(12.5%);
+	 box-sizing: border-box;
+	 float: left;
+	 min-width: 7.5em;
+     
+	 display: flex;
+     justify-content: center;
+     align-content: center;
+}
+ .td:last-child {
+	 border-right: none;
+}
+ .cell {
+	 font-size: 1.25em;
+	 font-family: sans-serif;
+	 padding: 0.5em;
+	 box-sizing: border-box;
+     
+	 display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-content: center;
+     text-align: center;
+}
+.cell a{
+    text-decoration: none;
+    color: white;
+}
+ .cell:first-child {
+	 padding-left: none;
+}
+ .cell:last-child {
+	 padding-right: none;
+}
+ 
