@@ -72,14 +72,12 @@
                         <?php $i++; endforeach; ?>
                     </div>
                 </div>
+                <button class="gradient-border mt-5" id="box">
+                    Submit
+                </button>
 
-                <div class="col-3 mt-5">
-                    <div class="webflow-style-input">
-                        <input type="text" placeholder="SUBMIT" disabled>
-                        <button type="submit" name="submit"><i class="fas fa-upload"></i></i></button>
-                    </div>
-                </div>
             </form>
+
         </div>
     </section>
 </body>
