@@ -61,6 +61,9 @@
                         <button type="submit"><i class="far fa-image"></i></button>
                     </div>
                 </div>
+        
+                <!--Mungkin Bisa ditambah checkbox buat kategori-->
+        
                 <div class="col-3 mt-5">
                     <div class="webflow-style-input">
                         <input type="text" placeholder="SUBMIT" disabled>
