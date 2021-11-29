@@ -1,5 +1,7 @@
 <?php
     require "../assets/php/functions.php";
+    $kategori = query("SELECT * FROM kategori");
+    $i = 0;
     if(isset($_POST["submit"])){
         if(insert($_POST) > 0){
             echo "
@@ -61,9 +63,16 @@
                         <button type="submit"><i class="far fa-image"></i></button>
                     </div>
                 </div>
-        
-                <!--Mungkin Bisa ditambah checkbox buat kategori-->
-        
+
+                <div class="col-12 mt-5">
+                    <div class="webflow-style-input">
+                        <?php foreach($kategori as $row): ?>
+                            <input type="checkbox" name="kategori[]" id="<?php echo $kategori["$i"]["kategori"] ?>" value="<?php echo $kategori[$i]["id_kategori"] ?>">
+                            <label for="<?php echo $kategori["$i"]["kategori"] ?>"><?php echo $kategori["$i"]["kategori"] ?></label>
+                        <?php $i++; endforeach; ?>
+                    </div>
+                </div>
+
                 <div class="col-3 mt-5">
                     <div class="webflow-style-input">
                         <input type="text" placeholder="SUBMIT" disabled>
