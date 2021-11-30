@@ -7,7 +7,7 @@
             echo "
                 <script>
                     alert('game berhasil ditambahkan');
-                    document.location.href = '../index.php';
+                    document.location.href = 'admin.php';
                 </script>
             ";
         }else{
