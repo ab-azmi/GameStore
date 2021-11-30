@@ -87,7 +87,7 @@
                             <div class="td">
                                 <div class="cell">
                                     <a href="/gamestore/views/edit_game.php">Edit</a>
-                                    <a href="#">Hapus</a>
+                                    <a href="/gamestore/assets/php/delete.php?id=<?php echo $baris["id_game"]; ?>" onclick="return confirm('yakin ?');">Hapus</a>
                                 </div>
                             </div>
                         </div>
