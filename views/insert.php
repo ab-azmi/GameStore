@@ -1,7 +1,6 @@
 <?php
     require "../assets/php/functions.php";
     $kategori = query("SELECT * FROM kategori");
-    $i = 0;
     if(isset($_POST["submit"])){
         if(insert($_POST) > 0){
             echo "
@@ -68,9 +67,9 @@
                 <div class="col-12 mt-5">
                     <div class="webflow-style-input">
                         <?php foreach($kategori as $row): ?>
-                            <input type="checkbox" name="kategori[]" id="<?php echo $kategori["$i"]["kategori"] ?>" value="<?php echo $kategori[$i]["id_kategori"] ?>">
-                            <label for="<?php echo $kategori["$i"]["kategori"] ?>"><?php echo $kategori["$i"]["kategori"] ?></label>
-                        <?php $i++; endforeach; ?>
+                            <input type="checkbox" name="kategori[]" id="<?php echo $row["kategori"] ?>" value="<?php echo $row["id_kategori"] ?>">
+                            <label for="<?php echo $row["kategori"] ?>"><?php echo $row["kategori"] ?></label>
+                        <?php endforeach; ?>
                     </div>
                 </div>
                 <div class="col-3">
