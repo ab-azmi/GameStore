@@ -1,0 +1,281 @@
+/* Carousel */
+.jssorl-009-spin img {
+animation-name: jssorl-009-spin;
+animation-duration: 1.6s;
+animation-iteration-count: infinite;
+animation-timing-function: linear;
+}
+
+@keyframes jssorl-009-spin {
+from {
+transform: rotate(0deg);
+}
+
+to {
+transform: rotate(360deg);
+}
+}
+.jssorb031 {position:absolute;}
+.jssorb031 .i {position:absolute;cursor:pointer;}
+.jssorb031 .i .b {fill:#000;fill-opacity:0.5;stroke:#fff;stroke-width:1200;stroke-miterlimit:10;stroke-opacity:0.3;}
+.jssorb031 .i:hover .b {fill:#fff;fill-opacity:.7;stroke:#000;stroke-opacity:.5;}
+.jssorb031 .iav .b {fill:#fff;stroke:#000;fill-opacity:1;}
+.jssorb031 .i.idn {opacity:.3;}
+.jssora051 {display:block;position:absolute;cursor:pointer;}
+.jssora051 .a {fill:none;stroke:#fff;stroke-width:360;stroke-miterlimit:10;}
+.jssora051:hover {opacity:.8;}
+.jssora051.jssora051dn {opacity:.5;}
+.jssora051.jssora051ds {opacity:.3;pointer-events:none;}
+/* End Carousel */
+
+
+
+
+/* Tabs Start */
+
+.ease {
+	-webkit-transition: all .5s;
+	   -moz-transition: all .5s;
+		 -o-transition: all .5s;
+			transition: all .5s;
+}
+
+.tab-container {
+	width: 100%;
+	max-width: 100vw;
+	margin: 0 auto;
+	
+}
+
+.tabs {
+	background: var(--color-dark-1);
+	position: relative;
+	margin-bottom: 50px;
+}
+
+.tabs > input,
+.tabs > span {
+	width: 20%;
+	height: 60px;
+	line-height: 60px;
+	position: absolute;
+	top: 0;
+}
+
+.tabs > input {
+	cursor: pointer;
+	filter: alpha(opacity=0);
+	opacity: 0;
+	position: absolute;
+	z-index: 99;
+}
+
+.tabs > span {
+	background: var(--color-dark-2);
+	text-align: center;
+	overflow: hidden;
+}
+
+span span{
+	font-size: 1.5rem;
+}
+
+.tabs > span i,
+.tabs > span {
+	-webkit-transition: all .5s;
+	   -moz-transition: all .5s;
+		 -o-transition: all .5s;
+			transition: all .5s;
+}
+
+.tabs > input:hover + span {
+	background: var(--color-primary);
+}
+
+.tabs > input:checked + span {
+	background: var(--color-primary);
+}
+
+.tabs > input + span{
+	color: var(--color-primary);
+}
+
+.tabs > input:checked + span,
+.tabs > input:hover + span {
+	color: white;
+}
+
+#tab-1, #tab-1 + span {
+	left: 0;
+}
+
+#tab-2, #tab-2 + span {
+	left: 20%;
+}
+
+#tab-3, #tab-3 + span {
+	left: 40%;
+}
+
+#tab-4, #tab-4 + span {
+	left: 60%;
+}
+
+#tab-5, #tab-5 + span {
+	left: 80%;
+}
+
+.tab-content {
+	padding: 80px 20px 20px;
+	width: 100%;
+	min-height: 340px;
+}
+
+.tab-content section {
+	width: 100%;
+	height: fit-content;
+	display: none;
+}
+
+.tab-content h1{
+    color: black;
+}
+
+#tab-1:checked ~ .tab-content #tab-item-1  {
+	display: flex;
+	gap: 3rem;
+	padding: 4rem;
+}
+.details-img{
+	width: 30rem;
+}
+.details-text h1{
+	color: white;
+	font-size: 3.5rem;
+}
+.details-rates, .details-publisher, .details-rilis, 
+.details-platform, .details-deskripsi{
+	font-size: 1.5rem;
+}
+.details-harga{
+	color: var(--color-primary);
+	font-size: 2.5rem;
+}
+.badges{
+	display: flex;
+	gap: 1rem;
+}
+.details-badge{
+	padding: .5rem 1rem;
+	border-radius: 1rem;
+	font-size: 1rem;
+	background-color: var(--color-primary);
+}
+.details-btn{
+	font-size: 2rem;
+	padding: .5rem 1rem;
+	border-radius: .3rem;
+}
+.details-btn-beli{
+	background: var(--color-primary);
+	color: white;
+	border: 1px solid var(--color-primary);
+}
+.details-btn-keranjang{
+	border: 1px solid var(--color-primary);
+	color: var(--color-primary);
+}
+#tab-2:checked ~ .tab-content #tab-item-2  {
+	display: block;
+}
+
+#tab-3:checked ~ .tab-content #tab-item-3  {
+	display: block;
+}
+
+#tab-4:checked ~ .tab-content #tab-item-4  {
+	display: block;
+}
+
+#tab-5:checked ~ .tab-content #tab-item-5  {
+	display: block;
+}
+
+/* effect-1 */
+
+.effect-1 > input:checked + span {
+	background: #fff;
+}
+
+
+/* effect-2 */
+
+.effect-2 span i{
+	padding-right: 15px;
+}
+
+@media (max-width: 600px) {
+	.effect-2 span span {display: none;}
+	.effect-2 span i {padding: 0;}
+}
+
+/* effect-3 */
+
+.effect-3 .line{
+	background: #3498DB;
+	width: 20%;
+	height: 4px;
+	position: absolute;
+	top: 56px;
+}
+
+#tab-1:checked ~ .line {
+	left: 0;
+}
+
+#tab-2:checked ~ .line {
+	left: 20%;
+}
+
+#tab-3:checked ~ .line {
+	left: 40%;
+}
+
+#tab-4:checked ~ .line {
+	left: 60%;
+}
+
+#tab-5:checked ~ .line {
+	left: 80%;
+}
+
+
+/* effect-4 */
+
+.effect-4 span i{
+	font-size: 18px;
+	display: block;
+	position: absolute;
+	left: 50%;
+	top: 0;
+	opacity: 0;
+	transform: translateX(-50%);
+}
+
+.effect-4 span span{
+	position: relative;
+	top: 10px;
+}
+
+.effect-4 > input:checked + span i,
+.effect-4 > input:hover + span i {
+	top: 20%;
+	opacity: 1;
+}
+
+/* effect-5 */
+
+.effect-5 > input:checked + span i,
+.effect-5 > input:hover + span i {
+	font-size: 25px;
+}
