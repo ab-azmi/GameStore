@@ -2,10 +2,6 @@
 require "../assets/php/functions.php";
 
 $id = $_GET["id"];
-$kategori_lama = query("SELECT
-                        kategori.id_kategori
-                        FROM((kategori_games INNER JOIN games ON kategori_games.id_game = games.id_game) 
-                        INNER JOIN kategori ON kategori_games.id_kategori = kategori.id_kategori) WHERE games.id_game = '$id'");
 $kategori = query("SELECT * FROM kategori");
 $game = query("SELECT * FROM games WHERE id_game = '$id'")[0];
 
@@ -21,7 +17,7 @@ if (isset($_POST["submit"])) {
         echo "
                 <script>
                     alert('game gagal diubah');
-                    document.location.href = 'edit_game.php';
+                    document.location.href = 'admin.php';
                 </script>
             ";
     }
@@ -40,9 +36,6 @@ if (isset($_POST["submit"])) {
         <div class="container">
             <h1 class="text-center">EDIT GAME</h1>
             <form action="" method="post">
-                <?php $i = 0; foreach($kategori_lama as $row) : ?>
-                    <input type="hidden" name="kategori_lama[]" value="<?php echo $kategori_lama["$i"]["id_kategori"]; ?>">
-                <?php $i++; endforeach; ?>
                 <input type="hidden" name="id_game" value="<?php echo $game["id_game"]; ?>">
                 <div class="row mt-5">
                     <div class="col-6">
@@ -78,10 +71,10 @@ if (isset($_POST["submit"])) {
                 </div>
 
                 <div class="col-12 mt-5">
-                    <div class="webflow-style-input">
+                    <div class="webflow-style-input" required>
                         <?php $i = 0; foreach ($kategori as $row) : ?>
-                            <input type="checkbox" name="kategori[]" id="<?php echo $kategori["$i"]["kategori"] ?>" value="<?php echo $kategori[$i]["id_kategori"] ?>">
-                            <label for="<?php echo $kategori["$i"]["kategori"] ?>"><?php echo $kategori["$i"]["kategori"] ?></label>
+                            <input type="checkbox" name="kategori[]" id="<?php echo $row["kategori"] ?>" value="<?php echo $row["id_kategori"] ?>">
+                            <label for="<?php echo $row["kategori"] ?>"><?php echo $row["kategori"] ?></label>
                         <?php $i++;
                         endforeach; ?>
                     </div>
