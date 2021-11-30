@@ -34,4 +34,12 @@
         }
         return mysqli_affected_rows($koneksi);
     }
+
+    function delete($id){
+        global $koneksi;
+        mysqli_query($koneksi, "DELETE FROM kategori_games WHERE id_game = '$id'");
+        mysqli_query($koneksi, "DELETE FROM publisher_game WHERE id_game = '$id'");
+        mysqli_query($koneksi, "DELETE FROM games WHERE id_game = '$id'");
+        return mysqli_affected_rows($koneksi);
+    }
 ?>
