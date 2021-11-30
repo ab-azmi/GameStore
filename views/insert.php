@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <div class="col-3">
-                    <button class="gradient-border mt-5" id="box">
+                    <button class="gradient-border mt-5" id="box" name = "submit">
                         Submit
                     </button>
                 </div>
