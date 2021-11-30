@@ -42,4 +42,38 @@
         mysqli_query($koneksi, "DELETE FROM games WHERE id_game = '$id'");
         return mysqli_affected_rows($koneksi);
     }
+
+    function edit($data){
+        global $koneksi;
+        $id_game = $data["id_game"];
+        $nama_game = htmlspecialchars($data["nama_game"]);
+        $harga = htmlspecialchars($data["harga"]);
+        $tanggal_rilis = htmlspecialchars($data["tanggal_rilis"]);
+        $deskripsi = htmlspecialchars($data["deskripsi"]);
+        $gambar = htmlspecialchars($data["gambar"]);
+        $kategori_lama = $data["kategori_lama"];
+        $result = mysqli_query($koneksi, "UPDATE games SET
+                                                id_game = '$id_game',
+                                                name = '$nama_game',
+                                                harga = '$harga',
+                                                deskripsi = '$deskripsi',
+                                                tanggal_rilis = '$tanggal_rilis',
+                                                gambar = '$gambar'
+                                                WHERE id_game = $id_game");
+
+        if($data["kategori"] == ""){
+            $kategori = $kategori_lama;
+        }else{
+            $kategori = $data["kategori"];
+        }
+
+        foreach($kategori as $isi){
+            mysqli_query($koneksi, "UPDATE kategori_games SET
+                                            id_game = '$id_game',
+                                            id_kategori = '$kategori'
+                                            WHERE id_game = '$id_game' 
+                                            AND id_kategori = '$kategori_lama'");
+        }
+        return mysqli_affected_rows($koneksi);
+    }
 ?>
