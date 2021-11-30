@@ -25,7 +25,7 @@
         <div class="container">
             <div class="row justify-content-end">
                 <div class="col-3">
-                    <a href="/gamestore_main/views/insert.php" class="box-link">
+                    <a href="/gamestore/views/insert.php" class="box-link">
                         <button class="gradient-border mt-5" id="box">
                             Insert Games
                         </button>
