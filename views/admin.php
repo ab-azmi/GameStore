@@ -10,7 +10,7 @@
                     games.tanggal_rilis,
                     games.gambar
                     FROM((publisher_game INNER JOIN publishers ON publisher_game.id_publisher = publishers.id_publisher) 
-                    INNER JOIN games ON publisher_game.id_game = games.id_game) /*WHERE publishers.id_publisher = 1*/"); //id_publisher fleksibel
+                    INNER JOIN games ON publisher_game.id_game = games.id_game) /*WHERE publishers.id_publisher = 1*/"); //id_publisher fleksibel tergantung login admin
 ?>
 
 <!DOCTYPE html>
