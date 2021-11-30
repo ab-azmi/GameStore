@@ -45,13 +45,15 @@
 
     function edit($data){
         global $koneksi;
+
         $id_game = $data["id_game"];
         $nama_game = htmlspecialchars($data["nama_game"]);
         $harga = htmlspecialchars($data["harga"]);
         $tanggal_rilis = htmlspecialchars($data["tanggal_rilis"]);
         $deskripsi = htmlspecialchars($data["deskripsi"]);
         $gambar = htmlspecialchars($data["gambar"]);
-        $kategori_lama = $data["kategori_lama"];
+        $kategori = $data["kategori"];
+
         $result = mysqli_query($koneksi, "UPDATE games SET
                                                 id_game = '$id_game',
                                                 name = '$nama_game',
@@ -61,19 +63,12 @@
                                                 gambar = '$gambar'
                                                 WHERE id_game = $id_game");
 
-        if($data["kategori"] == ""){
-            $kategori = $kategori_lama;
-        }else{
-            $kategori = $data["kategori"];
-        }
+        mysqli_query($koneksi, "DELETE FROM kategori_games WHERE id_game = $id_game");
 
         foreach($kategori as $isi){
-            mysqli_query($koneksi, "UPDATE kategori_games SET
-                                            id_game = '$id_game',
-                                            id_kategori = '$kategori'
-                                            WHERE id_game = '$id_game' 
-                                            AND id_kategori = '$kategori_lama'");
+            mysqli_query($koneksi, "INSERT INTO kategori_games VALUES('$id_game', '$isi')");
         }
+
         return mysqli_affected_rows($koneksi);
     }
 ?>
