@@ -86,7 +86,7 @@
                             </div>
                             <div class="td">
                                 <div class="cell">
-                                    <a href="/gamestore_main/views/edit_game.php">Edit</a>
+                                    <a href="/gamestore/views/edit_game.php">Edit</a>
                                     <a href="#">Hapus</a>
                                 </div>
                             </div>
