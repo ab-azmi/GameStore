@@ -7,13 +7,13 @@
                 alert('game berhasil dihapus');
             </script>
         ";
-        header("location:/gamestore_main/views/admin.php");
+        header("location:/gamestore/views/admin.php");
     }else{
         echo "
             <script>
                 alert('game gagal dihapus');
             </script>
         ";
-        header("location:/gamestore_main/views/admin.php");
+        header("location:/gamestore/views/admin.php");
     }
 ?>
