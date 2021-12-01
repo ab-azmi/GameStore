@@ -12,7 +12,7 @@ $games = query("SELECT * FROM games");
         <div class="row">
             <?php foreach ($games as $row) : ?>
                 <div class="col-md-3">
-                    <a href="/gamestore/views/detail.php" class="games-detail-link">
+                    <a href="/gamestore/views/detail.php?id=<?php echo $row["id_game"]; ?>" class="games-detail-link">
                         <div class="wsk-cp-product">
                             <div class="wsk-cp-img">
                                 <img src="<?php echo $row["gambar"]; ?>" alt="Product" class="img-responsive" />
