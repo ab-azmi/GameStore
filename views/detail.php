@@ -1,3 +1,21 @@
+<?php
+    include "../assets/php/functions.php";
+    $id = $_GET["id"];
+    $game = query("SELECT
+                    publishers.id_publisher,
+                    publishers.nama_publisher,
+                    games.id_game,
+                    games.name,
+                    games.harga,
+                    games.deskripsi,
+                    games.tanggal_rilis,
+                    games.gambar
+                    FROM((publisher_game INNER JOIN publishers ON publisher_game.id_publisher = publishers.id_publisher) 
+                    INNER JOIN games ON publisher_game.id_game = games.id_game) WHERE games.id_game = $id")[0];
+    $gambar = query("SELECT detail_game.gambar
+                    FROM (detail_game INNER JOIN games ON detail_game.id_game = games.id_game) WHERE games.id_game = $id");
+    $rating = query("SELECT ROUND(AVG(rating)) FROM feedback WHERE id_game = $id")[0];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,15 +38,11 @@
 
                 <!-- Slides Container -->
                 <div data-u="slides" style="position: absolute; left: 0px; top: 0px; width: 1300px; height: 500px; overflow: hidden;">
+                    <?php foreach($gambar as $baris) : ?>
                     <div>
-                        <img data-u="image" src="https://www.xboxygen.com/IMG/jpg/assassins-creed-valhalla-xbox-seriesx.jpg" class="slider" />
+                        <img data-u="image" src="<?php echo $baris["gambar"]; ?>" class="slider" />
                     </div>
-                    <div>
-                        <img data-u="image" src="https://cdn.mos.cms.futurecdn.net/eFfdeboHexD3qdgWgs9dze-1200-80.jpg" class="slider" />
-                    </div>
-                    <div>
-                        <img data-u="image" src="https://www.newgamenetwork.com/images/uploads/gallery/AssassinsCreedValhalla/acvalhalla_02.jpg" class="slider" />
-                    </div>
+                    <?php endforeach; ?>
                 </div>
 
                 <!--#region Bullet Navigator Skin Begin -->
@@ -97,27 +111,34 @@
             <!-- tab-content -->
             <div class="tab-content">
                 <section id="tab-item-1" class="tab-details">
-                    <img class="details-img" src="https://cdn.europosters.eu/image/1300/posters/assassin-s-creed-valhalla-raid-i96340.jpg" alt="" srcset="">
+                    <img class="details-img" src="<?php echo $game["gambar"] ?>" alt="" srcset="">
                     <div class="details-text">
-                        <h1>Assasin's Creed: Valhala</h1>
+                        <h1><?php echo $game["name"]; ?></h1>
                         <div class="badges">
-                            <span class="details-badge">Adventure</span>
-                            <span class="details-badge">RPG</span>
-                            <span class="details-badge">War</span>
+                            <?php
+                                $kategori = query("SELECT
+                                                    kategori.kategori
+                                                    FROM((kategori_games INNER JOIN games ON kategori_games.id_game = games.id_game) 
+                                                    INNER JOIN kategori ON kategori_games.id_kategori = kategori.id_kategori) WHERE games.id_game = $id");
+
+                                foreach ($kategori as $baris) : ?>
+                                <span class="details-badge"><?php echo $baris["kategori"]; ?></span>
+                            <?php endforeach;
+                            ?>
                         </div>
                         <p class="details-rates mt-5">
-                            IGN : 8/10 <br>
-                            Metacritic : 7.9/10
+                            IGN : <?php echo $rating["ROUND(AVG(rating))"]; ?>/10 <br>
+                            Metacritic : <?php echo $rating["ROUND(AVG(rating))"]; ?>/10
                         </p>
                         <hr>
-                        <p class="details-publisher">Publisher : Ubisoft</p>
-                        <p class="details-rilis">Rilis : 24 November 2022</p>
-                        <p class="details-platform">Platform : PS5, PS4, XBOX X, PC</p>
+                        <p class="details-publisher">Publisher : <?php echo $game["nama_publisher"]; ?></p>
+                        <p class="details-rilis">Rilis : <?php echo $game["tanggal_rilis"]; ?></p>
+                        <p class="details-platform">Platform : PC</p>
                         <hr>
                         <p class="details-deskripsi">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex enim provident unde sit sint, corporis rem consequatur. Minima, consequatur natus! Perspiciatis tempora alias iusto ducimus facere dolore dolorem explicabo mollitia.
+                            <?php echo $game["deskripsi"]; ?>
                         </p>
-                        <p class="details-harga">Rp. 200000</p>
+                        <p class="details-harga">Rp. <?php echo $game["harga"]; ?></p>
                         <div class="row mt-5">
                             <button class="col-3 details-btn details-btn-beli">Beli</button>
                             <button class="col-3 offset-1 details-btn details-btn-keranjang">Keranjang</button>
