@@ -15,6 +15,10 @@
     $gambar = query("SELECT detail_game.gambar
                     FROM (detail_game INNER JOIN games ON detail_game.id_game = games.id_game) WHERE games.id_game = $id");
     $rating = query("SELECT ROUND(AVG(rating)) FROM feedback WHERE id_game = $id")[0];
+    if($rating["ROUND(AVG(rating))"] == NULL){
+        $rating["ROUND(AVG(rating))"] = "-";
+    }
+    $tanggal = date('d F Y ', strtotime($game["tanggal_rilis"]));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -132,7 +136,7 @@
                         </p>
                         <hr>
                         <p class="details-publisher">Publisher : <?php echo $game["nama_publisher"]; ?></p>
-                        <p class="details-rilis">Rilis : <?php echo $game["tanggal_rilis"]; ?></p>
+                        <p class="details-rilis">Rilis : <?php echo $tanggal; ?></p>
                         <p class="details-platform">Platform : PC</p>
                         <hr>
                         <p class="details-deskripsi">
