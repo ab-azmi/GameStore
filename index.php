@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require "assets/php/functions.php";
 ?>
 
