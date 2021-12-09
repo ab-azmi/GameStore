@@ -27,7 +27,7 @@
                 <input type="password" name="password" id="password">
             </li>
             <li>
-                <button type="submit" name="login">Login</button>
+                <button type="submit" name="submit">Login</button>
             </li>
         </ul>
     </form>
