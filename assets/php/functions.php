@@ -71,4 +71,21 @@
 
         return mysqli_affected_rows($koneksi);
     }
+    function login($data){
+            global $koneksi;
+            $username = $data["username"];
+            $password = $data["password"];
+
+            $result = mysqli_query($koneksi, "SELECT * FROM users WHERE username = '$username'");
+
+            if( mysqli_num_rows($result) === 1 ) {
+                $row = mysqli_fetch_assoc($result);
+                if(password_verify($password, $row["password"])) {
+                    $_SESSION["id_user"] = $row["id_user"];
+                    header("location:/gamestore/index.php");
+                    return false;
+                }
+            }
+            return true;
+    }
 ?>
