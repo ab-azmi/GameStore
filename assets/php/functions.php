@@ -71,6 +71,35 @@
 
         return mysqli_affected_rows($koneksi);
     }
+
+    function registrasi($data){
+        global $koneksi;
+        $username = strtolower(stripslashes((htmlspecialchars($data["username"]))));
+        $password = mysqli_escape_string($koneksi, $data["password"]);
+        $konfirmasi_password = mysqli_escape_string($koneksi, $data["password2"]);
+
+        $nama = mysqli_query($koneksi, "SELECT username FROM users WHERE username = '$username'");
+
+        if(mysqli_num_rows($nama) == 1){
+            echo "<script>
+            alert('namanya udah pernah digunakan nih');
+            document.location.href = '/gamestore/index.php';
+            </script>";
+            return false;
+        }
+
+        if ($konfirmasi_password != $password){
+            echo "<script>
+            alert('konfirmasi passwordnya beda nih');
+            document.location.href = '/gamestore/index.php';
+            </script>";
+            return false;
+        }
+            $password = password_hash($password, PASSWORD_DEFAULT);
+            $result = mysqli_query($koneksi, "INSERT INTO users VALUE ('', '$username', '$password', '')");
+            return mysqli_affected_rows($koneksi);
+    }
+
     function login($data){
             global $koneksi;
             $username = $data["username"];
