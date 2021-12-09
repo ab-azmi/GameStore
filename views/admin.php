@@ -1,5 +1,11 @@
 <?php
+    session_start();
+    $id = $_SESSION["id_user"];
     require "../assets/php/functions.php";
+    if(!isset($_SESSION["id_user"])){
+        header("location:/gamestore/login.php");
+    }
+    $result = mysqli_num_rows(mysqli_query($koneksi, "SELECT id_user FROM users WHERE id_user = '$id'"));
     $game = query("SELECT
                     publishers.id_publisher,
                     publishers.nama_publisher,
@@ -10,7 +16,7 @@
                     games.tanggal_rilis,
                     games.gambar
                     FROM((publisher_game INNER JOIN publishers ON publisher_game.id_publisher = publishers.id_publisher) 
-                    INNER JOIN games ON publisher_game.id_game = games.id_game) /*WHERE publishers.id_publisher = 1*/"); //id_publisher fleksibel tergantung login admin
+                    INNER JOIN games ON publisher_game.id_game = games.id_game) WHERE publishers.id_publisher = '$id'");
 ?>
 
 <!DOCTYPE html>
