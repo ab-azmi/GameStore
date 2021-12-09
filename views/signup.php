@@ -9,7 +9,7 @@
             $_SESSION["id_user"] = mysqli_fetch_assoc($id);
             echo "<script>
                 alert('berhasil ditambahkan!');
-                document.location.href = 'index.php?id=$id[id_user]';
+                document.location.href = '../index.php';
             </script>";
         } else{
             echo "<script>
