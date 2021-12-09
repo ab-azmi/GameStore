@@ -12,7 +12,7 @@
                 <li class="nav-item"><a href="/GameStore/index.php">Home</a></li>
                 <li class="nav-item"><a href="/GameStore/views/admin.php">Admin</a></li>
                 <?php if(isset($_SESSION["id_user"])): ?>
-                    <li class="nav-item"><a href="/gamestore/assets/php/logOut.php">Log-out</a></li>
+                    <li class="nav-item"><a href="/gamestore/assets/php/logout.php">Log-out</a></li>
                 <?php else : ?>
                     <li class="nav-item"><a href="/gamestore/views/login.php">Login</a></li>
                 <?php endif; ?>
