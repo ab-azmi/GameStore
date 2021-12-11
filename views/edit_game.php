@@ -1,6 +1,9 @@
 <?php
 require "../assets/php/functions.php";
 
+    require_once('../assets/php/classes/db.php');
+    require_once('../assets/php/classes/crud.php');
+
 $id = $_GET["id"];
 $kategori = query("SELECT * FROM kategori");
 $game = query("SELECT * FROM games WHERE id_game = '$id'")[0];
