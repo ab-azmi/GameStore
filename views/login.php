@@ -1,21 +1,24 @@
 <?php
 
-    $conn = mysqli_connect("localhost", "root", "", "game_store");
-    if( isset($_POST["login"]) ) {
-        $username = $_POST["username"];
-        $password = $_POST["password"];
+    // $conn = mysqli_connect("localhost", "root", "", "game_store");
+    // if( isset($_POST["login"]) ) {
+    //     $username = $_POST["username"];
+    //     $password = $_POST["password"];
 
-        $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'");
+    //     $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'");
 
-        if( mysqli_num_rows($result) === 1 ) {
-            $row = mysqli_fetch_assoc($result);
-            if(password_verify($password, $row["password"])) {
-                header("location: index.php");
-                exit;
-            }
-        }
-    $error = true;
-}
+    //     if( mysqli_num_rows($result) === 1 ) {
+    //         $row = mysqli_fetch_assoc($result);
+    //         if(password_verify($password, $row["password"])) {
+    //             header("location: ../index.php");
+    //             exit;
+    //         }
+    //         session_start();
+    //         $_SESSION["ssn_username"] = $row["username"];
+    //         $_SESSION["ssn_id"] = $row["id_user"];
+    //     }
+    //     $error = true;
+    // }
 
 ?>
 
@@ -26,10 +29,7 @@
 </head>
 <body>
     <h1>Halaman Login</h1>
-    <?php if(isset($error)) : ?>
-        <p style="color:red; font-style:italic;">username / password anda salah!</p>
-    <?php endif; ?>
-    <form action="" method="post">
+    <form action="../assets/php/includes/login_inc.php" method="post">
         <ul>
             <li>
                 <label for="username">Username :</label>
@@ -40,7 +40,10 @@
                 <input type="password" name="password" id="password">
             </li>
             <li>
-                <button type="submit" name="login">Login</button>
+                <button type="submit" name="submit">Login</button>
+            </li>
+            <li>
+                <a href="/GameStore/views/signup.php">Sign Up</a>
             </li>
         </ul>
     </form>

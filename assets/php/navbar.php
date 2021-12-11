@@ -11,9 +11,17 @@
             <ul class="nav no-search">
                 <li class="nav-item"><a href="/GameStore/index.php">Home</a></li>
                 <li class="nav-item"><a href="/GameStore/views/admin.php">Admin</a></li>
-                <li class="nav-item"><a href="#">Login</a></li>
+                <?php if (isset($_SESSION["id_user"])) { ?>
+                    <li class="nav-item"><a href="/GameStore/assets/php/includes/logout_inc.php">Logout</a></li>
+                <?php } else { ?>
+                    <li class="nav-item"><a href="/GameStore/views/login.php">Login</a></li>
+                <?php } ?>
                 <li class="nav-item"><a href="#">Profil</a></li>
-                <li class="nav-item"><a href="#">Friends</a></li>
+                <li class="nav-item">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Friends
+                    </a>
+                </li>
                 <li class="nav-item"><a href="#">
                         <i class="fas fa-shopping-cart"></i>
                     </a></li>
@@ -21,5 +29,39 @@
                 <input class="search-input" type="text" placeholder="Search..">
             </ul>
         </nav>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Your Friends</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="friend-list">
+                        <?php 
+                            $obj = new CRUD();
+
+                            $friend = $obj->getFriends($_SESSION["id_user"]);
+                            if($friend->rowCount() > 0){
+                                while($row = $friend->fetch(PDO::FETCH_ASSOC)){
+                        ?>
+                         <div class="friend">
+                            <p class="friend-name"><?= $row["username"] ?></p>
+                            <p class="friend-status online">Online</p>
+                        </div>
+                        <?php  
+                                }
+                            }
+                        ?>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

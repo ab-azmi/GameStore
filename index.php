@@ -1,5 +1,8 @@
 <?php
+    session_start();
     require "assets/php/functions.php";
+    require_once('assets/php/classes/db.php');
+    require_once('assets/php/classes/crud.php');
 ?>
 
 <!DOCTYPE html>
