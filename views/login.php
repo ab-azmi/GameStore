@@ -29,6 +29,9 @@
             <li>
                 <button type="submit" name="submit">Login</button>
             </li>
+            <li>
+                <a href="/GameStore/views/register.php">Register</a>
+            </li>
         </ul>
     </form>
 </body>
