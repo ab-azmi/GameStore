@@ -1,5 +1,7 @@
 <?php
     include "../assets/php/functions.php";
+require_once('../assets/php/classes/db.php');
+    require_once('../assets/php/classes/crud.php');
     $id = $_GET["id"];
     $game = query("SELECT
                     publishers.id_publisher,
