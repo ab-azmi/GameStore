@@ -52,21 +52,22 @@
         $tanggal_rilis = htmlspecialchars($data["tanggal_rilis"]);
         $deskripsi = htmlspecialchars($data["deskripsi"]);
         $gambar = htmlspecialchars($data["gambar"]);
-        //$kategori = $data["kategori"];
-
-        $result = mysqli_query($koneksi, "UPDATE games SET
-                                                id_game = '$id_game',
-                                                name = '$nama_game',
-                                                harga = '$harga',
-                                                deskripsi = '$deskripsi',
-                                                tanggal_rilis = '$tanggal_rilis',
-                                                gambar = '$gambar'
-                                                WHERE id_game = $id_game");
-
+        
+        $result = mysqli_query($koneksi, "UPDATE `games` SET 
+                                                id_game='$id_game',
+                                                name='$nama_game',
+                                                harga='$harga',
+                                                deskripsi='$deskripsi',
+                                                tanggal_rilis='$tanggal_rilis',
+                                                gambar='$gambar' 
+                                                WHERE id_game = '$id_game'");
+        if (isset($data["kategori"])){
+        $kategori = $data["kategori"];
         mysqli_query($koneksi, "DELETE FROM kategori_games WHERE id_game = $id_game");
 
         foreach($kategori as $isi){
             mysqli_query($koneksi, "INSERT INTO kategori_games VALUES('$id_game', '$isi')");
+        }
         }
 
         return mysqli_affected_rows($koneksi);
