@@ -52,7 +52,7 @@
         $tanggal_rilis = htmlspecialchars($data["tanggal_rilis"]);
         $deskripsi = htmlspecialchars($data["deskripsi"]);
         $gambar = htmlspecialchars($data["gambar"]);
-        
+
         $result = mysqli_query($koneksi, "UPDATE `games` SET 
                                                 id_game='$id_game',
                                                 name='$nama_game',
