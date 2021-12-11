@@ -52,7 +52,7 @@
         $tanggal_rilis = htmlspecialchars($data["tanggal_rilis"]);
         $deskripsi = htmlspecialchars($data["deskripsi"]);
         $gambar = htmlspecialchars($data["gambar"]);
-        $kategori = $data["kategori"];
+        //$kategori = $data["kategori"];
 
         $result = mysqli_query($koneksi, "UPDATE games SET
                                                 id_game = '$id_game',
@@ -111,6 +111,7 @@
                 $row = mysqli_fetch_assoc($result);
                 if(password_verify($password, $row["password"])) {
                     $_SESSION["id_user"] = $row["id_user"];
+                    $_SESSION["username"] = $row["username"];
                     header("location:/gamestore/index.php");
                     return false;
                 }

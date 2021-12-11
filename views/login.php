@@ -21,11 +21,11 @@
     //     $error = true;
     // }
 
-//     require "../assets/php/functions.php";
-//     session_start();
-//     if( isset($_POST["submit"]) ) {
-//         $error = login($_POST);
-//     }
+    require "../assets/php/functions.php";
+    session_start();
+    if( isset($_POST["submit"]) ) {
+        $error = login($_POST);
+    }
 
 ?>
 
@@ -36,7 +36,7 @@
 </head>
 <body>
     <h1>Halaman Login</h1>
-    <form action="../assets/php/includes/login_inc.php" method="post">
+    <form action="" method="post">
         <ul>
             <li>
                 <label for="username">Username :</label>

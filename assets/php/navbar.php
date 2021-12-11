@@ -10,10 +10,17 @@
             </div>
             <ul class="nav no-search">
                 <li class="nav-item"><a href="/GameStore/index.php">Home</a></li>
+                <?php 
+                if(isset($_SESSION["id_user"])){ 
+                    if($_SESSION["username"] == "admin"){
+                // ?>
                 <li class="nav-item"><a href="/GameStore/views/admin.php">Admin</a></li>
-
+                <?php 
+                    } 
+                }
+                ?>
                 <?php if(isset($_SESSION["id_user"])): ?>
-                    <li class="nav-item"><a href="/gamestore/assets/php/logout.php">Log-out</a></li>
+                    <li class="nav-item"><a href="/gamestore/assets/php/includes/logout_inc.php">Log-out</a></li>
                 <?php else : ?>
                     <li class="nav-item"><a href="/gamestore/views/login.php">Login</a></li>
                 <?php endif; ?>
@@ -23,7 +30,7 @@
                         Friends
                     </a>
                 </li>
-                <li class="nav-item"><a href="#">
+                <li class="nav-item"><a href="/gamestore/views/keranjang.php">
                         <i class="fas fa-shopping-cart"></i>
                     </a></li>
                 <i class="fas fa-search" id="search-icon"></i>
@@ -42,20 +49,31 @@
                 </div>
                 <div class="modal-body">
                     <div class="friend-list">
-                        <?php 
-                            $obj = new CRUD();
+                        <?php
+                        // $obj = new CRUD();
 
-                            $friend = $obj->getFriends($_SESSION["id_user"]);
-                            if($friend->rowCount() > 0){
-                                while($row = $friend->fetch(PDO::FETCH_ASSOC)){
+                        // $friend = $obj->getFriends($_SESSION["id_user"]);
+                        // if($friend->rowCount() > 0){
+                        //     while($row = $friend->fetch(PDO::FETCH_ASSOC)){
+
+                        $conn = mysqli_connect("localhost", "root", "", "game_store");
+
+                        $id = $_SESSION["id_user"];
+
+                        $sql = "SELECT * FROM users INNER JOIN friends ON users.id_user = friends.id_user_2 WHERE friends.id_user_1 = '$id'";
+                        $result = mysqli_query($conn, $sql);
+                        while($row = mysqli_fetch_assoc($result)):
                         ?>
                          <div class="friend">
-                            <p class="friend-name"><?= $row["username"] ?></p>
+                            <p class="friend-name">
+                                <?= $row["username"] ?>
+                            </p>
                             <p class="friend-status online">Online</p>
                         </div>
                         <?php  
-                                }
-                            }
+                        endwhile;
+                            //     }
+                            // }
                         ?>
                     </div>
                 </div>
