@@ -1,5 +1,8 @@
 <?php
     require "../assets/php/functions.php";
+
+    require_once('../assets/php/classes/db.php');
+    require_once('../assets/php/classes/crud.php');
     $kategori = query("SELECT * FROM kategori");
     if(isset($_POST["submit"])){
         if(insert($_POST) > 0){
