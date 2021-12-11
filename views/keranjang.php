@@ -1,31 +1,76 @@
 <?php
-    $conn = mysqli_connect("localhost", "root", "", "game_store");
-
-    $result = mysqli_query($conn, "SELECT * FROM keranjang");
+session_start();
+require_once('../assets/php/classes/db.php');
+require_once('../assets/php/classes/crud.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Keranjang</title>
-</head>
-<body>
-    <h1>Keranjang</h1>
-    <table border="1" cellpadding="5" cellspacing="0">
-        <tr>
-            <th>No.</th>
-            <th>ID Game</th>
-            <th>ID User</th>
-        </tr>
+<?php include '../assets/php/header.php'; ?>
 
-        <?php $i = 1; ?>
-        <?php while($row = mysqli_fetch_assoc($result)) : ?>
-        <tr>
-            <td><?= $i; ?></td>
-            <td><?= $row["id_game"]; ?></td>
-            <td><?= $row["id_user"]; ?></td>
-        </tr>
-        <?php $i++; ?>
-        <?php endwhile; ?>
-    </table>
+<body>
+    <?php include '../assets/php/navbar.php'; ?>
+
+    <div class="shell">
+        <div class="games-title">
+            <h1>Keranjang Anda</h1>
+            <h1>BAYAR</h1>
+        </div>
+        <div class="container2">
+            <div class="row">
+                <?php
+                $obj = new CRUD();
+
+                $data = $obj->getKeranjang($_SESSION["id_user"]);
+                if ($data->rowCount() > 0) {
+                    while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
+                ?>
+                        <div class="col-md-3">
+                            <a href="/gamestore/views/detail.php?id=<?php echo $row["id_game"]; ?>" class="games-detail-link">
+                                <div class="wsk-cp-product">
+                                    <div class="wsk-cp-img">
+                                        <img src="<?php echo $row["gambar"]; ?>" alt="Product" class="img-responsive" />
+                                    </div>
+                                    <div class="wsk-cp-text">
+                                        <div class="category">
+                                            <span>
+                                                <?php
+                                                $kategori = $obj->getKategori($row["id_game"]);
+                                                if ($kategori->rowCount() > 0) {
+                                                    while ($row_ktgr = $kategori->fetch(PDO::FETCH_ASSOC)) {
+                                                ?>
+
+                                                        <?= $row_ktgr["kategori"] ?>
+
+                                                <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </span>
+                                        </div>
+                                        <div class="title-product">
+                                            <h3><?php echo $row["name"]; ?></h3>
+                                        </div>
+                                        <div class="description-prod">
+                                            <p><?php echo $row["deskripsi"]; ?></p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="wcf-left"><span class="price">Rp. <?php echo $row["harga"]; ?></span></div>
+                                            <div class="wcf-right"><a href="#" class="buy-btn"><i class="fas fa-shopping-cart"></i></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                <?php
+                    }
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+
 </body>
+<?php include '../assets/php/footer.php'; ?>
+
 </html>
