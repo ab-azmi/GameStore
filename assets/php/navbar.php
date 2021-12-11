@@ -11,11 +11,12 @@
             <ul class="nav no-search">
                 <li class="nav-item"><a href="/GameStore/index.php">Home</a></li>
                 <li class="nav-item"><a href="/GameStore/views/admin.php">Admin</a></li>
-                <?php if (isset($_SESSION["id_user"])) { ?>
-                    <li class="nav-item"><a href="/GameStore/assets/php/includes/logout_inc.php">Logout</a></li>
-                <?php } else { ?>
-                    <li class="nav-item"><a href="/GameStore/views/login.php">Login</a></li>
-                <?php } ?>
+
+                <?php if(isset($_SESSION["id_user"])): ?>
+                    <li class="nav-item"><a href="/gamestore/assets/php/logout.php">Log-out</a></li>
+                <?php else : ?>
+                    <li class="nav-item"><a href="/gamestore/views/login.php">Login</a></li>
+                <?php endif; ?>
                 <li class="nav-item"><a href="#">Profil</a></li>
                 <li class="nav-item">
                     <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2021 at 05:50 AM
+-- Generation Time: Dec 10, 2021 at 02:12 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -71,36 +71,6 @@ CREATE TABLE `feedback` (
   `rating` int(1) NOT NULL,
   `komentar` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `feedback`
---
-
-INSERT INTO `feedback` (`id_game`, `id_user`, `rating`, `komentar`) VALUES
-(1, 2, 8, 'bagus'),
-(1, 3, 10, 'ngeri'),
-(1, 4, 9, 'ngeri bang'),
-(1, 5, 8, 'ok bgt bang'),
-(1, 6, 10, 'grafik burique, tapi boong'),
-(2, 2, 9, 'gg'),
-(2, 3, 9, 'ok'),
-(2, 4, 9, 'lol'),
-(2, 5, 10, 'mantap'),
-(2, 6, 7, 'gua bisa bikin lebih bagus'),
-(3, 2, 7, 'buriq'),
-(3, 3, 9, 'bagus'),
-(3, 4, 9, 'racing'),
-(3, 5, 8, 'mantap'),
-(3, 6, 10, 'bgt'),
-(4, 2, 10, 'ngeri'),
-(4, 3, 8, 'asr'),
-(4, 4, 9, 'dddd'),
-(4, 5, 10, 'po'),
-(4, 6, 7, 'fg'),
-(5, 2, 5, 'ngantuk'),
-(5, 4, 4, 'males, bosenin'),
-(7, 5, 6, 'masih buriq'),
-(8, 6, 9, 'ganteng');
 
 -- --------------------------------------------------------
 
@@ -188,14 +158,14 @@ INSERT INTO `kategori_games` (`id_game`, `id_kategori`) VALUES
 (4, 4),
 (4, 3),
 (4, 1),
-(5, 1),
 (7, 2),
 (7, 1),
 (7, 3),
 (8, 1),
 (1, 1),
 (1, 3),
-(1, 4);
+(1, 4),
+(5, 1);
 
 -- --------------------------------------------------------
 
@@ -305,19 +275,20 @@ CREATE TABLE `users` (
   `id_user` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `profil_image` text NOT NULL
+  `foto_profil` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id_user`, `username`, `password`, `profil_image`) VALUES
-(2, 'rating_1', '123', ''),
-(3, 'rating_2', '123', ''),
-(4, 'rating_3', '123', ''),
-(5, 'rating_4', '123', ''),
-(6, 'rating_5', '123', '');
+INSERT INTO `users` (`id_user`, `username`, `password`, `foto_profil`) VALUES
+(1, 'ubisoft', '$2y$10$aGQE/jFWSrGJIBGN6oj68uv0TOD5IWd.GfGbXV2Rlwoo5KSgWuDRu', ''),
+(2, 'xbox game studio', '$2y$10$WDKJOG62OcuuOrV.QkXKouIWLjSUlbtMSqGYmas8Jt/6dkCI74sdu', ''),
+(3, '505 games', '$2y$10$hYne8HSnLctYS1Tgsw55GOVOALusjC9ZSVAe8MLYigp78zAZl1QlC', ''),
+(4, 'ember lab', '$2y$10$NlOgmheZj.FaUJTvb96wDexyAVDFlAcokNfo6rQPHQcfQcDL.l1gC', ''),
+(5, 'rockstar', '$2y$10$Pgm4uVL6.VZk6Khz90seJORd63FOzFon2EQBg2wh29vpeuc6ryB6W', ''),
+(6, 'frogwares', '$2y$10$CYsXsja5C7jlB0.SujgpyOIRe2VdLjIYvOKdkLnRNpfQv.3crl282', '');
 
 --
 -- Indexes for dumped tables
@@ -418,7 +389,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `games`
 --
 ALTER TABLE `games`
-  MODIFY `id_game` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_game` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -442,7 +413,7 @@ ALTER TABLE `tagihan`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
@@ -493,8 +464,8 @@ ALTER TABLE `koleksi`
 -- Constraints for table `membayar`
 --
 ALTER TABLE `membayar`
-  ADD CONSTRAINT `membayar_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`),
-  ADD CONSTRAINT `membayar_ibfk_2` FOREIGN KEY (`id_tagihan`) REFERENCES `tagihan` (`id_tagihan`);
+  ADD CONSTRAINT `membayar_ibfk_2` FOREIGN KEY (`id_tagihan`) REFERENCES `tagihan` (`id_tagihan`),
+  ADD CONSTRAINT `membayar_ibfk_3` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
 
 --
 -- Constraints for table `publisher_game`

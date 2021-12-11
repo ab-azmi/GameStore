@@ -1,5 +1,6 @@
 <?php
 
+
     // $conn = mysqli_connect("localhost", "root", "", "game_store");
     // if( isset($_POST["login"]) ) {
     //     $username = $_POST["username"];
@@ -19,6 +20,12 @@
     //     }
     //     $error = true;
     // }
+
+//     require "../assets/php/functions.php";
+//     session_start();
+//     if( isset($_POST["submit"]) ) {
+//         $error = login($_POST);
+//     }
 
 ?>
 
@@ -44,6 +51,9 @@
             </li>
             <li>
                 <a href="/GameStore/views/signup.php">Sign Up</a>
+
+<!--                 <a href="/GameStore/views/register.php">Register</a> -->
+
             </li>
         </ul>
     </form>
