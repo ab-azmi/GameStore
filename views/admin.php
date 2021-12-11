@@ -2,6 +2,8 @@
     session_start();
     $id = $_SESSION["id_user"];
     require "../assets/php/functions.php";
+require_once('../assets/php/classes/db.php');
+    require_once('../assets/php/classes/crud.php');
     if(!isset($_SESSION["id_user"])){
         header("location:/gamestore/login.php");
     }
