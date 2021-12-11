@@ -62,12 +62,12 @@
                                                 gambar='$gambar' 
                                                 WHERE id_game = '$id_game'");
         if (isset($data["kategori"])){
-        $kategori = $data["kategori"];
-        mysqli_query($koneksi, "DELETE FROM kategori_games WHERE id_game = $id_game");
+            $kategori = $data["kategori"];
+            mysqli_query($koneksi, "DELETE FROM kategori_games WHERE id_game = $id_game");
 
-        foreach($kategori as $isi){
-            mysqli_query($koneksi, "INSERT INTO kategori_games VALUES('$id_game', '$isi')");
-        }
+            foreach($kategori as $isi){
+                mysqli_query($koneksi, "INSERT INTO kategori_games VALUES('$id_game', '$isi')");
+            }
         }
 
         return mysqli_affected_rows($koneksi);
