@@ -31,24 +31,24 @@
             //return mysqli_affected_rows($conn);
     //}
 
-    if( isset($_POST["submit"]) ) {
-        if( registrasi($_POST) > 0 ) {
-            $id = mysqli_query($conn, "SELECT id_user FROM users ORDER BY id_user DESC LIMIT 1");
-            $id = mysqli_fetch_assoc($id);
-            echo "<script>
-                alert('berhasil ditambahkan!');
-                document.location.href = '../index.php?id=$id[id_user]';
-            </script>";
-        } else{
-            echo "<script>
-                document.location.href = 'register.php';
-            </script>";
-        }
-        $query = "INSERT INTO users
-                VALUES('', '$username', '$password')
-        ";
-        mysqli_query($conn, $query);
-    }
+    //if( isset($_POST["submit"]) ) {
+        //if( registrasi($_POST) > 0 ) {
+            //$id = mysqli_query($conn, "SELECT id_user FROM users ORDER BY id_user DESC LIMIT 1");
+            //$id = mysqli_fetch_assoc($id);
+            //echo "<script>
+                //alert('berhasil ditambahkan!');
+                //document.location.href = '../index.php?id=$id[id_user]';
+            //</script>";
+        //} else{
+            //echo "<script>
+                //document.location.href = 'register.php';
+            //</script>";
+        //}
+        //$query = "INSERT INTO users
+                //VALUES('', '$username', '$password')
+        //";
+        //mysqli_query($conn, $query);
+    //}
 
     session_start();
     require "../assets/php/functions.php";
