@@ -1,35 +1,35 @@
 <?php
 
 
-    $conn = mysqli_connect("localhost", "root", "", "game_store");
+    //$conn = mysqli_connect("localhost", "root", "", "game_store");
 
-    function registrasi($data){
-        global $conn;
-        $username = strtolower(stripslashes((htmlspecialchars($data["username"]))));
-        $password = mysqli_escape_string($conn, $data["password"]);
-        $konfirmasi_password = mysqli_escape_string($conn, $data["password2"]);
+    //function registrasi($data){
+        //global $conn;
+        //$username = strtolower(stripslashes((htmlspecialchars($data["username"]))));
+        //$password = mysqli_escape_string($conn, $data["password"]);
+        //$konfirmasi_password = mysqli_escape_string($conn, $data["password2"]);
 
-        $nama = mysqli_query($conn, "SELECT username FROM users WHERE username = '$username'");
+        //$nama = mysqli_query($conn, "SELECT username FROM users WHERE username = '$username'");
 
-        if(mysqli_num_rows($nama) == 1){
-            echo "<script>
-            alert('namanya udah pernah digunakan nih');
-            document.location.href = '/gamestore/index.php';
-            </script>";
-            return false;
-        }
+        //if(mysqli_num_rows($nama) == 1){
+            //echo "<script>
+            //alert('namanya udah pernah digunakan nih');
+            //document.location.href = '/gamestore/index.php';
+            //</script>";
+            //return false;
+        //}
 
-        if ($konfirmasi_password != $password){
-            echo "<script>
-            alert('konfirmasi passwordnya beda nih');
-            document.location.href = '/gamestore/index.php';
-            </script>";
-            return false;
-        }
-            $password = password_hash($password, PASSWORD_DEFAULT);
-            $result = mysqli_query($conn, "INSERT INTO users VALUE ('', '$username', '$password', '')");
-            return mysqli_affected_rows($conn);
-    }
+        //if ($konfirmasi_password != $password){
+            //echo "<script>
+            //alert('konfirmasi passwordnya beda nih');
+            //document.location.href = '/gamestore/index.php';
+            //</script>";
+            //return false;
+        //}
+            //$password = password_hash($password, PASSWORD_DEFAULT);
+            //$result = mysqli_query($conn, "INSERT INTO users VALUE ('', '$username', '$password', '')");
+            //return mysqli_affected_rows($conn);
+    //}
 
     if( isset($_POST["submit"]) ) {
         if( registrasi($_POST) > 0 ) {
