@@ -4,7 +4,7 @@
 
     if( isset($_POST["submit"]) ) {
         if( registrasi($_POST) > 0 ) {
-            $id = mysqli_query($conn, "SELECT id_user FROM users ORDER BY id_user DESC LIMIT 1");
+            $id = mysqli_query($koneksi, "SELECT id_user FROM users ORDER BY id_user DESC LIMIT 1");
             $_SESSION["id_user"] = mysqli_fetch_assoc($id);
             echo "<script>
                 alert('berhasil ditambahkan!');
