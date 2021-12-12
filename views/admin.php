@@ -5,7 +5,7 @@
 require_once('../assets/php/classes/db.php');
     require_once('../assets/php/classes/crud.php');
     if(!isset($_SESSION["id_user"])){
-        header("location:/gamestore/login.php");
+        header("location:/gamestore/views/login.php");
     }
     $result = mysqli_num_rows(mysqli_query($koneksi, "SELECT id_user FROM users WHERE id_user = '$id'"));
     $game = query("SELECT
