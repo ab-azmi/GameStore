@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 require "../assets/php/functions.php";
 
@@ -11,6 +12,7 @@ if (isset($_POST["submit"])) {
         $_SESSION["username"] = mysqli_fetch_assoc($username);
 
         echo "<script>
+
                 alert('berhasil ditambahkan!');
                 document.location.href = 'login.php';
             </script>";
