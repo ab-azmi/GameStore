@@ -119,4 +119,17 @@
             }
             return true;
     }
+
+    function tambahKeranjang($id_game, $id_user){
+        global $koneksi;
+        $id_game_ada = mysqli_query($koneksi, "SELECT * FROM keranjang WHERE id_game = '$id_game' AND id_user = '$id_user'");
+        if(!mysqli_num_rows($id_game_ada) == 1){
+            mysqli_query($koneksi, "INSERT INTO keranjang VALUES ('$id_game', '$id_user')");
+        }
+    }
+
+    function hapusKeranjang($id_game, $id_user){
+        global $koneksi;
+        mysqli_query($koneksi, "DELETE FROM keranjang WHERE id_game = '$id_game' AND id_user = '$id_user'");
+    }
 ?>
