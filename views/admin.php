@@ -75,10 +75,10 @@ require_once('../assets/php/classes/db.php');
                                 <div class="cell"><?php echo $baris["name"]; ?></div>
                             </div>
                             <div class="td" style="height: 125px; overflow : auto;">
-                                <div class="cell"><a href="<?php echo $baris["gambar"]; ?>"><?php echo $baris["gambar"]; ?></a></div>
+                               <img src="<?= $baris["gambar"] ?>" alt="" class="admin-gambar">
                             </div>
                             <div class="td" style="height: 125px; overflow : auto;">
-                                <div class="cell"><?php echo $baris["harga"]; ?></div>
+                                <div class="cell">Rp. <?php echo $baris["harga"]; ?></div>
                             </div>
                             <div class="td" style="height: 125px; overflow : auto;">
                                 <div class="cell"><?php echo $baris["deskripsi"]; ?></div>

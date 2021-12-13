@@ -24,7 +24,7 @@
                 <?php else : ?>
                     <li class="nav-item"><a href="/gamestore/views/login.php">Login</a></li>
                 <?php endif; ?>
-                <li class="nav-item"><a href="#">Profil</a></li>
+                <li class="nav-item"><a href="/gamestore/views/profil.php">Profil</a></li>
                 <li class="nav-item">
                     <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                         Friends
