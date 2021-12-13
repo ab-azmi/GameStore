@@ -132,4 +132,13 @@
         global $koneksi;
         mysqli_query($koneksi, "DELETE FROM keranjang WHERE id_game = '$id_game' AND id_user = '$id_user'");
     }
+
+    function tambahTagihan($id_game, $harga, $id_user){
+        global $koneksi;
+
+        $result = mysqli_query($koneksi, "SELECT * FROM tagihan WHERE id_game = '$id_game' AND id_user = '$id_user'");
+        if(!mysqli_num_rows($result) == 1){
+            mysqli_query($koneksi, "INSERT INTO tagihan VALUES ('', '$id_game', '$harga', '$id_user')");
+        }
+    }
 ?>
