@@ -25,6 +25,7 @@
         <?php $total_tagihan = $total_tagihan + $row["harga"];?>
     <?php endforeach; ?>
     <p>total tagihan = <?php echo $total_tagihan; ?></p>
+    <a href="/gamestore/views/profil.php?tambah_koleksi">Bayar</a>
     <a href="/gamestore/views/tagihan.php?hapus">Batal</a>
 </body>
 </html>
