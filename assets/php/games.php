@@ -42,18 +42,22 @@ $games = query("SELECT * FROM games");
                                 <div class="card-footer">
                                     <div class="wcf-left"><span class="price">Rp. <?php echo $row["harga"]; ?></span></div>
                                     <?php
-                                        if(isset($_SESSION["id_user"])) :
+                                        if(isset($_SESSION["id_user"])) {
                                             $id_user = $_SESSION["id_user"];
                                             $id_game_ada = mysqli_query($koneksi, "SELECT * FROM keranjang WHERE id_game = '$id' AND id_user = '$id_user'");
-                                            
-                                            if(!mysqli_num_rows($id_game_ada) == 1) :
+                                            $punya_game = mysqli_query($koneksi, "SELECT * FROM koleksi WHERE id_game = '$id' AND id_user = '$id_user'");
+                                            if(mysqli_num_rows($punya_game) == 1) { ?>
+                                            <div class="wcf-right"><a href="#" class="buy-btn">
+                                            <i class="fas fa-gamepad"></i>
+                                            </a></div>
+                                    <?php   }else if(!mysqli_num_rows($id_game_ada) == 1) {
                                     ?>
                                         <div class="wcf-right"><a href="/gamestore/views/keranjang.php?id_game=<?php echo "$id" ?>" class="buy-btn"><i class="fas fa-shopping-cart"></i></a></div>
                                     <?php 
-                                            endif;
-                                        else : ?>
+                                            }
+                                        }else { ?>
                                             <div class="wcf-right"><a href="/gamestore/views/keranjang.php" class="buy-btn"><i class="fas fa-shopping-cart"></i></a></div>
-                                        <?php endif;
+                                        <?php }
                                     ?>
                                 </div>
                             </div>
