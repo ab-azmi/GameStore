@@ -4,6 +4,8 @@
 @import 'form.css';
 @import 'admin.css';
 @import 'detail.css';
+@import 'signup.css';
+@import 'login.css';
 @import url('https://fonts.googleapis.com/css?family=Roboto');
  
 html{
