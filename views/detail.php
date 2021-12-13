@@ -13,10 +13,10 @@ require_once('../assets/php/classes/db.php');
                     games.tanggal_rilis,
                     games.gambar
                     FROM((publisher_game INNER JOIN publishers ON publisher_game.id_publisher = publishers.id_publisher) 
-                    INNER JOIN games ON publisher_game.id_game = games.id_game) WHERE games.id_game = $id")[0];
+                    INNER JOIN games ON publisher_game.id_game = games.id_game) WHERE games.id_game = '$id'")[0];
     $gambar = query("SELECT detail_game.gambar
-                    FROM (detail_game INNER JOIN games ON detail_game.id_game = games.id_game) WHERE games.id_game = $id");
-    $rating = query("SELECT ROUND(AVG(rating)) FROM feedback WHERE id_game = $id")[0];
+                    FROM (detail_game INNER JOIN games ON detail_game.id_game = games.id_game) WHERE games.id_game = '$id'");
+    $rating = query("SELECT ROUND(AVG(rating)) FROM feedback WHERE id_game = '$id'")[0];
     if($rating["ROUND(AVG(rating))"] == NULL){
         $rating["ROUND(AVG(rating))"] = "-";
     }
@@ -125,7 +125,7 @@ require_once('../assets/php/classes/db.php');
                                 $kategori = query("SELECT
                                                     kategori.kategori
                                                     FROM((kategori_games INNER JOIN games ON kategori_games.id_game = games.id_game) 
-                                                    INNER JOIN kategori ON kategori_games.id_kategori = kategori.id_kategori) WHERE games.id_game = $id");
+                                                    INNER JOIN kategori ON kategori_games.id_kategori = kategori.id_kategori) WHERE games.id_game = '$id'");
 
                                 foreach ($kategori as $baris) : ?>
                                 <span class="details-badge"><?php echo $baris["kategori"]; ?></span>
