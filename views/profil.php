@@ -1,7 +1,13 @@
 <?php
 session_start();
+require "../assets/php/functions.php";
 require_once('../assets/php/classes/db.php');
 require_once('../assets/php/classes/crud.php');
+
+if(isset($_GET["tambah_koleksi"])){
+    tambahKoleksi($_SESSION["id_user"]);
+    header("location:/gamestore/views/profil.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
