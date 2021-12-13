@@ -26,6 +26,14 @@ class CRUD extends DB{
         return $stmt;
     }
 
+    public function getKoleksi($currentUser)
+    {
+        $sql = "SELECT * FROM games INNER JOIN koleksi ON games.id_game = koleksi.id_game INNER JOIN users ON koleksi.id_user = users.id_user WHERE koleksi.id_user = :currentUser AND users.id_user = :currentUser";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute(array(':currentUser' => $currentUser));
+        return $stmt;
+    }
+
     public function getDataAdmin(){
         $sql = "SELECT
                     publishers.id_publisher,
