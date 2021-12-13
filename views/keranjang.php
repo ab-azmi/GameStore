@@ -1,66 +1,85 @@
 <?php
-$games = query("SELECT * FROM games");
+session_start();
+require "../assets/php/functions.php";
+require_once('../assets/php/classes/db.php');
+require_once('../assets/php/classes/crud.php');
+if(isset($_GET["id_game"])){
+    tambahKeranjang($_GET["id_game"], $_SESSION["id_user"]);
+    header("location:/gamestore/views/keranjang.php");
+}
+if(isset($_GET["hapus"])){
+    hapusKeranjang($_GET["id_game"], $_SESSION["id_user"]);
+    header("location:/gamestore/views/keranjang.php");
+}
 ?>
-<div class="shell">
-    <div class="games-title">
-        <h1>Recomendations</h1>
-        <a href="#" class="games-link">
-            Lainnya
-        </a>
-    </div>
-    <div class="container2">
-        <div class="row">
-            <?php foreach ($games as $row) : ?>
-                <div class="col-md-3">
-                    <a href="/gamestore/views/detail.php?id=<?php echo $row["id_game"]; ?>" class="games-detail-link">
-                        <div class="wsk-cp-product">
-                            <div class="wsk-cp-img">
-                                <img src="<?php echo $row["gambar"]; ?>" alt="Product" class="img-responsive" />
-                            </div>
-                            <div class="wsk-cp-text">
-                                <div class="category">
-                                    <span>
-                                        <?php
-                                        $id = $row["id_game"];
-                                        $kategori = query("SELECT
-                                                            kategori.kategori
-                                                            FROM((kategori_games INNER JOIN games ON kategori_games.id_game = games.id_game) 
-                                                            INNER JOIN kategori ON kategori_games.id_kategori = kategori.id_kategori) WHERE games.id_game = $id");
+<!DOCTYPE html>
+<html lang="en">
+<?php include '../assets/php/header.php'; ?>
 
-                                        foreach ($kategori as $baris) : ?>
-                                             <?php echo $baris["kategori"]; ?>
-                                        <?php endforeach;
-                                        ?>
-                                    </span>
+<body>
+    <?php include '../assets/php/navbar.php'; ?>
+
+    <div class="shell">
+        <div class="games-title">
+            <h1>Keranjang Anda</h1>
+            <h1>BAYAR</h1>
+        </div>
+        <div class="container2">
+            <div class="row">
+                <?php
+                $obj = new CRUD();
+
+                $data = $obj->getKeranjang($_SESSION["id_user"]);
+                if ($data->rowCount() > 0) {
+                    while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
+                ?>
+                        <div class="col-md-3">
+                            <a href="/gamestore/views/detail.php?id=<?php echo $row["id_game"]; ?>" class="games-detail-link">
+                                <div class="wsk-cp-product">
+                                    <div class="wsk-cp-img">
+                                        <img src="<?php echo $row["gambar"]; ?>" alt="Product" class="img-responsive" />
+                                    </div>
+                                    <div class="wsk-cp-text">
+                                        <div class="category">
+                                            <span>
+                                                <?php
+                                                $kategori = $obj->getKategori($row["id_game"]);
+                                                if ($kategori->rowCount() > 0) {
+                                                    while ($row_ktgr = $kategori->fetch(PDO::FETCH_ASSOC)) {
+                                                ?>
+
+                                                        <?= $row_ktgr["kategori"] ?>
+
+                                                <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </span>
+                                        </div>
+                                        <div class="title-product">
+                                            <h3><?php echo $row["name"]; ?></h3>
+                                        </div>
+                                        <div class="description-prod">
+                                            <p><?php echo $row["deskripsi"]; ?></p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="wcf-left"><span class="price">Rp. <?php echo $row["harga"]; ?></span></div>
+                                            <div class="wcf-right"><a href="keranjang.php?hapus&id_game=<?php echo $row["id_game"] ?>" class="buy-btn" style="text-decoration: none;">X</a></div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="title-product">
-                                    <h3><?php echo $row["name"]; ?></h3>
-                                </div>
-                                <div class="description-prod">
-                                    <p><?php echo $row["deskripsi"]; ?></p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="wcf-left"><span class="price">Rp. <?php echo $row["harga"]; ?></span></div>
-                                    <?php
-                                        if(isset($_SESSION["id_user"])) :
-                                            $id_user = $_SESSION["id_user"];
-                                            $id_game_ada = mysqli_query($koneksi, "SELECT * FROM keranjang WHERE id_game = '$id' AND id_user = '$id_user'");
-                                            
-                                            if(!mysqli_num_rows($id_game_ada) == 1) :
-                                    ?>
-                                        <div class="wcf-right"><a href="/gamestore/views/keranjang.php?id_game=<?php echo "$id" ?>" class="buy-btn"><i class="fas fa-shopping-cart"></i></a></div>
-                                    <?php 
-                                            endif;
-                                        else : ?>
-                                            <div class="wcf-right"><a href="/gamestore/views/keranjang.php" class="buy-btn"><i class="fas fa-shopping-cart"></i></a></div>
-                                        <?php endif;
-                                    ?>
-                                </div>
-                            </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
-            <?php endforeach; ?>
+
+                <?php
+                    }
+                }
+                ?>
+            </div>
         </div>
     </div>
-</div>
+
+</body>
+<?php include '../assets/php/footer.php'; ?>
+
+</html>
