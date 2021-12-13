@@ -1,8 +1,6 @@
 <?php
     session_start();
     include "../assets/php/functions.php";
-    require_once('../assets/php/classes/db.php');
-    require_once('../assets/php/classes/crud.php');
     $id = $_GET["id"];
 
     $game = query("SELECT
@@ -161,14 +159,14 @@
                     </div>
                 </section>
                 <section id="tab-item-2">
-                    <h1>Komentar</h1>
+                    <h1 class="text-white">Komentar</h1>
                     <?php foreach($komentar as $row) : ?>
                         <h3><?php echo $row["username"]; ?></h3>
                         <p><?php echo $row["komentar"]; ?></p>
                     <?php endforeach; ?>
                 </section>
                 <section id="tab-item-3">
-                    <h1>Requirement</h1>
+                    <h1 class="text-white">Requirement</h1>
                     <p>CPU : <?php echo $requirement["CPU"] ?></p>
                     <p>RAM : <?php echo $requirement["RAM"] ?></p>
                     <p>OS : <?php echo $requirement["OS"] ?></p>
