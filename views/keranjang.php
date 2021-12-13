@@ -67,6 +67,7 @@ if(isset($_GET["hapus"])){
                                         </div>
                                         <div class="card-footer">
                                             <div class="wcf-left"><span class="price">Rp. <?php echo $row["harga"]; ?></span></div>
+                                            <div class="wcf-right"><a href="tagihan.php?id_game=<?php echo $row["id_game"]; ?>&harga=<?php echo $row["harga"]; ?>" class="buy-btn" style="text-decoration: none; width: 80px; border-radius:12px;">bayar</a></div>
                                             <div class="wcf-right"><a href="keranjang.php?hapus&id_game=<?php echo $row["id_game"] ?>" class="buy-btn" style="text-decoration: none;">X</a></div>
                                         </div>
                                     </div>
