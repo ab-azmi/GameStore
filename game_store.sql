@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2021 at 02:41 PM
+-- Generation Time: Dec 13, 2021 at 04:05 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -226,14 +226,6 @@ CREATE TABLE `keranjang` (
   `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `keranjang`
---
-
-INSERT INTO `keranjang` (`id_game`, `id_user`) VALUES
-(1, 1),
-(2, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -316,9 +308,8 @@ INSERT INTO `publisher_game` (`id_publisher`, `id_game`) VALUES
 CREATE TABLE `tagihan` (
   `id_tagihan` int(11) NOT NULL,
   `id_game` int(11) NOT NULL,
-  `diskon` int(11) NOT NULL,
-  `pajak` int(11) NOT NULL,
-  `total_harga` int(11) NOT NULL
+  `harga` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -436,7 +427,8 @@ ALTER TABLE `publisher_game`
 ALTER TABLE `tagihan`
   ADD PRIMARY KEY (`id_tagihan`),
   ADD KEY `id_game` (`id_game`),
-  ADD KEY `id_tagihan` (`id_tagihan`);
+  ADD KEY `id_tagihan` (`id_tagihan`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `users`
@@ -470,7 +462,7 @@ ALTER TABLE `publishers`
 -- AUTO_INCREMENT for table `tagihan`
 --
 ALTER TABLE `tagihan`
-  MODIFY `id_tagihan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tagihan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -533,8 +525,7 @@ ALTER TABLE `koleksi`
 -- Constraints for table `membayar`
 --
 ALTER TABLE `membayar`
-  ADD CONSTRAINT `membayar_ibfk_2` FOREIGN KEY (`id_tagihan`) REFERENCES `tagihan` (`id_tagihan`),
-  ADD CONSTRAINT `membayar_ibfk_3` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
+  ADD CONSTRAINT `membayar_ibfk_1` FOREIGN KEY (`id_tagihan`) REFERENCES `tagihan` (`id_tagihan`);
 
 --
 -- Constraints for table `publisher_game`
@@ -547,7 +538,8 @@ ALTER TABLE `publisher_game`
 -- Constraints for table `tagihan`
 --
 ALTER TABLE `tagihan`
-  ADD CONSTRAINT `tagihan_ibfk_1` FOREIGN KEY (`id_game`) REFERENCES `games` (`id_game`);
+  ADD CONSTRAINT `tagihan_ibfk_1` FOREIGN KEY (`id_game`) REFERENCES `games` (`id_game`),
+  ADD CONSTRAINT `tagihan_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
