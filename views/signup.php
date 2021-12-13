@@ -5,8 +5,9 @@
     if( isset($_POST["submit"]) ) {
         if( registrasi($_POST) > 0 ) {
             $id = mysqli_query($koneksi, "SELECT * FROM users ORDER BY id_user DESC LIMIT 1");
-            $_SESSION["username"] = mysqli_fetch_assoc($id_["username"]);
-            $_SESSION["id_user"] = mysqli_fetch_assoc($id["username"]);
+            $result = mysqli_fetch_assoc($id);
+            $_SESSION["username"] = $result["username"];
+            $_SESSION["id_user"] = $result["id_user"];
             echo "<script>
                 alert('berhasil ditambahkan!');
                 document.location.href = '../index.php';
