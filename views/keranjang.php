@@ -3,6 +3,9 @@ session_start();
 require "../assets/php/functions.php";
 require_once('../assets/php/classes/db.php');
 require_once('../assets/php/classes/crud.php');
+if(!isset($_SESSION["id_user"])){
+    header("location:/gamestore/");
+}
 if(isset($_GET["id_game"])){
     tambahKeranjang($_GET["id_game"], $_SESSION["id_user"]);
     header("location:/gamestore/views/keranjang.php");
