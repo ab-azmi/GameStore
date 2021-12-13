@@ -1,7 +1,16 @@
 <?php
 session_start();
+require "../assets/php/functions.php";
 require_once('../assets/php/classes/db.php');
 require_once('../assets/php/classes/crud.php');
+if(isset($_GET["id_game"])){
+    tambahKeranjang($_GET["id_game"], $_SESSION["id_user"]);
+    header("location:/gamestore/views/keranjang.php");
+}
+if(isset($_GET["hapus"])){
+    hapusKeranjang($_GET["id_game"], $_SESSION["id_user"]);
+    header("location:/gamestore/views/keranjang.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +64,7 @@ require_once('../assets/php/classes/crud.php');
                                         </div>
                                         <div class="card-footer">
                                             <div class="wcf-left"><span class="price">Rp. <?php echo $row["harga"]; ?></span></div>
-                                            <div class="wcf-right"><a href="#" class="buy-btn"><i class="fas fa-shopping-cart"></i></a></div>
+                                            <div class="wcf-right"><a href="keranjang.php?hapus&id_game=<?php echo $row["id_game"] ?>" class="buy-btn" style="text-decoration: none;">X</a></div>
                                         </div>
                                     </div>
                                 </div>
