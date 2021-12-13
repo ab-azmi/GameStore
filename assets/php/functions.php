@@ -141,4 +141,14 @@
             mysqli_query($koneksi, "INSERT INTO tagihan VALUES ('', '$id_game', '$harga', '$id_user')");
         }
     }
+    function tambahKoleksi($id_user){
+        global $koneksi;
+        $tagihan = query("SELECT id_game FROM tagihan WHERE id_user = '$id_user'");
+        foreach($tagihan as $row){
+            $id_game = $row["id_game"];
+            mysqli_query($koneksi, "INSERT INTO koleksi VALUES ('$id_user', '$id_game', '30', '1')");
+            mysqli_query($koneksi, "DELETE FROM keranjang WHERE id_game = '$id_game' AND id_user = '$id_user'");
+            mysqli_query($koneksi, "DELETE FROM tagihan WHERE id_game = '$id_game' AND id_user = '$id_user'");
+        }
+    }
 ?>
