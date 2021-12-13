@@ -4,6 +4,7 @@
     require_once('../assets/php/classes/db.php');
     require_once('../assets/php/classes/crud.php');
     $id = $_GET["id"];
+
     $game = query("SELECT
                     publishers.id_publisher,
                     publishers.nama_publisher,
@@ -15,9 +16,16 @@
                     games.gambar
                     FROM((publisher_game INNER JOIN publishers ON publisher_game.id_publisher = publishers.id_publisher) 
                     INNER JOIN games ON publisher_game.id_game = games.id_game) WHERE games.id_game = '$id'")[0];
+
     $gambar = query("SELECT detail_game.gambar
                     FROM (detail_game INNER JOIN games ON detail_game.id_game = games.id_game) WHERE games.id_game = '$id'");
+
+    $komentar = query("SELECT feedback.id_user, feedback.komentar, users.username FROM(feedback INNER JOIN users ON feedback.id_user = users.id_user) Where feedback.id_game = '$id'");
+
+    $requirement = query("SELECT * FROM game_requirement WHERE id_game = '$id'")[0];
+
     $rating = query("SELECT ROUND(AVG(rating)) FROM feedback WHERE id_game = '$id'")[0];
+
     if($rating["ROUND(AVG(rating))"] == NULL){
         $rating["ROUND(AVG(rating))"] = "-";
     }
@@ -153,10 +161,18 @@
                     </div>
                 </section>
                 <section id="tab-item-2">
-                    <h1>Two</h1>
+                    <h1>Komentar</h1>
+                    <?php foreach($komentar as $row) : ?>
+                        <h3><?php echo $row["username"]; ?></h3>
+                        <p><?php echo $row["komentar"]; ?></p>
+                    <?php endforeach; ?>
                 </section>
                 <section id="tab-item-3">
-                    <h1>Three</h1>
+                    <h1>Requirement</h1>
+                    <p>CPU : <?php echo $requirement["CPU"] ?></p>
+                    <p>RAM : <?php echo $requirement["RAM"] ?></p>
+                    <p>OS : <?php echo $requirement["OS"] ?></p>
+                    <p>Video Card : <?php echo $requirement["video_card"] ?></p>
                 </section>
                 <!-- <section id="tab-item-4">
                     <h1>Four</h1>
