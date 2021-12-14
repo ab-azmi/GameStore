@@ -13,12 +13,21 @@
 
     function insert($data){
         global $koneksi;
+
+        $username_publisher = $_SESSION["username"];
+
+        
+        if(!mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM publishers WHERE nama_publisher = '$username_publisher'"))){
+            mysqli_query($koneksi, "INSERT INTO publishers VALUES ('', '$username_publisher')");
+        }
+
         $nama_game = htmlspecialchars($data["nama_game"]);
         $harga = htmlspecialchars($data["harga"]);
         $tanggal_rilis = htmlspecialchars($data["tanggal_rilis"]);
         $deskripsi = htmlspecialchars($data["deskripsi"]);
         $gambar = htmlspecialchars($data["gambar"]);
-        $result = mysqli_query($koneksi, "INSERT INTO games VALUES('', '$nama_game', '$harga', '$deskripsi', '$tanggal_rilis', '$gambar')");
+        
+        mysqli_query($koneksi, "INSERT INTO games VALUES('', '$nama_game', '$harga', '$deskripsi', '$tanggal_rilis', '$gambar')");
 
         $id_game = 0;
         $hasil = mysqli_query($koneksi, "SELECT id_game FROM games ORDER BY id_game DESC LIMIT 1");
@@ -26,6 +35,11 @@
         foreach($row as $isi){
             $id_game = $isi;
         }
+
+        $result = query("SELECT id_publisher FROM publishers WHERE nama_publisher = '$username_publisher'")[0];
+        $id_publisher = $result["id_publisher"];
+
+        mysqli_query($koneksi, "INSERT INTO publisher_game VALUES ('$id_publisher', '$id_game')");
 
         $kategori = $data["kategori"];
 
@@ -37,6 +51,9 @@
 
     function delete($id){
         global $koneksi;
+        mysqli_query($koneksi, "DELETE FROM koleksi WHERE id_game = '$id'");
+        mysqli_query($koneksi, "DELETE FROM tagihan WHERE id_game = '$id'");
+        mysqli_query($koneksi, "DELETE FROM keranjang WHERE id_game = '$id'");
         mysqli_query($koneksi, "DELETE FROM kategori_games WHERE id_game = '$id'");
         mysqli_query($koneksi, "DELETE FROM publisher_game WHERE id_game = '$id'");
         mysqli_query($koneksi, "DELETE FROM games WHERE id_game = '$id'");
