@@ -51,6 +51,9 @@
 
     function delete($id){
         global $koneksi;
+        mysqli_query($koneksi, "DELETE FROM feedback WHERE id_game = '$id'");
+        mysqli_query($koneksi, "DELETE FROM detail_game WHERE id_game = '$id'");
+        mysqli_query($koneksi, "DELETE FROM game_requirement WHERE id_game = '$id'");
         mysqli_query($koneksi, "DELETE FROM koleksi WHERE id_game = '$id'");
         mysqli_query($koneksi, "DELETE FROM tagihan WHERE id_game = '$id'");
         mysqli_query($koneksi, "DELETE FROM keranjang WHERE id_game = '$id'");
